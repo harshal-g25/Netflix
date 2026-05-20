@@ -1,0 +1,235 @@
+/* Romantic cinematic overlays & animations */
+
+.romantic-glow {
+  box-shadow: 0 0 40px rgba(229, 9, 20, 0.25), 0 0 80px rgba(255, 105, 180, 0.15);
+}
+
+.romantic-glow-text {
+  text-shadow: 0 0 20px rgba(229, 9, 20, 0.5), 0 0 40px rgba(255, 105, 180, 0.3);
+}
+
+.glass-panel {
+  background: rgba(20, 20, 20, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.media-placeholder {
+  background: linear-gradient(
+    135deg,
+    #1a0a0f 0%,
+    #2d1519 35%,
+    #141414 70%,
+    #0d0d0d 100%
+  );
+  border: 1px dashed rgba(229, 9, 20, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.media-placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    rgba(229, 9, 20, 0.12) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.media-placeholder span {
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  padding: 0 0.5rem;
+  z-index: 1;
+}
+
+.media-placeholder strong {
+  font-size: 0.75rem;
+  color: rgba(255, 200, 210, 0.85);
+  margin-top: 0.25rem;
+  z-index: 1;
+}
+
+/* Floating hearts */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.heart-particle {
+  position: absolute;
+  bottom: -2rem;
+  font-size: 1rem;
+  opacity: 0;
+  animation: floatHeart linear infinite;
+  color: rgba(255, 105, 135, 0.6);
+  text-shadow: 0 0 8px rgba(229, 9, 20, 0.5);
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Password shake */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-8px);
+  }
+  40%,
+  80% {
+    transform: translateX(8px);
+  }
+}
+
+.shake-animation {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Fade cinematic */
+.fade-in-cinematic {
+  animation: fadeInCinematic 1.2s ease forwards;
+}
+
+@keyframes fadeInCinematic {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typing cursor */
+.typing-cursor::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+  color: #e50914;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Envelope */
+.envelope-card {
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.envelope-inner {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.envelope-card.open .envelope-flap {
+  transform: rotateX(-160deg);
+}
+
+.envelope-flap {
+  transform-origin: top center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Confetti */
+.confetti-piece {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  top: -10px;
+  z-index: 100;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Fade to black ending */
+.fade-to-black {
+  animation: fadeToBlack 3s ease forwards;
+}
+
+@keyframes fadeToBlack {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Music player glow pulse */
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 105, 180, 0.45);
+  }
+}
+
+.music-player-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Hero video overlay */
+.hero-video-wrap video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.password-screen-enter {
+  animation: passwordEnter 1.5s ease forwards;
+}
+
+@keyframes passwordEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
